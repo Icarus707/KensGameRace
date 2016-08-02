@@ -1,14 +1,15 @@
 var Char = function(){
 
-	this.x = 0;
-	this.y = 0;
-	this.xVel = 0;
-	this.yVel = 0;
-	this.xSize = 20;
-	this.ySize = 20;
-	this.speed = 5;
+	var x = 0;
+	var y = 0;
+	var xVel = 0;
+	var yVel = 0;
+	var xSize = 20;
+	var ySize = 20;
+	var speed = 5;
 
-	this.y = gameHeight - this.ySize;
+	y = gameHeight - ySize;
+	//x = gameWidth \2;
 	
 	this.update = function(){
 		this.keyboard();
@@ -17,29 +18,54 @@ var Char = function(){
 	this.draw = function(){
 		
 		fill(255);
-		rect(this.x, this.y, this.xSize, this.ySize);
+		rect(x, y, xSize, ySize);
 	};
 
 	this.keyboard = function(){
 
 
-		// if(keyIsDown(UP_ARROW)){
-		// 	console.log("up");
-		// 	this.y = this.y + -this.speed;
-		// }
-		// if(keyIsDown(DOWN_ARROW)){
-		// 		this.y = this.y + this.speed;
-		// }
 
-		if(keyIsDown(LEFT_ARROW) && this.x > 0){
-				this.x = this.x + -this.speed;
+		if(keyIsDown(LEFT_ARROW) && x > 0){
+				x = x + -speed;
 		}
 
-		if(keyIsDown(RIGHT_ARROW) && this.x + this.xSize < gameWidth){
-				this.x = this.x + this.speed;
+		if(keyIsDown(RIGHT_ARROW) && x + xSize < gameWidth){
+				x = x + speed;
 		}
 
-		
+		if(keyIsDown(UP_ARROW)){
+			console.log("up pressed");
+			shootHandler.pushShoot(x, y);	
+		}
 	
 	};
+
+	
+	this.getX = function(){
+		return x;
+	};
+
+	this.getY = function(){
+		return y;
+	};
+
+	this.getXSize = function(){
+		return xSize;
+	};
+
+
 };
+
+function keyTyped() {
+  if (key === ' ') {
+    
+  	shootHandler.pushShoot(char.getX(), char.getY());	
+
+  } 
+ }
+
+
+
+
+
+

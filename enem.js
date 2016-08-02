@@ -1,26 +1,40 @@
-var Enem = function(x){
+var Enem = function(inX){
 
-	this.x = 0;
-	this.y = 0;
-	this.xVel = 0;
-	this.yVel =0;
-	this.speed = 5;
-	this.xSize = 20;
-	this.ySize = 20;
+	var x = inX;
+	var y = 0;
+	var xVel = 0;
+	var yVel = 0;
+	var speed = 5;
+	var xSize = 20;
+	var ySize = 20;
 
-	this.x = x;
 	this.update = function(){
-		this.y = this.y + this.speed;
+		
 
-		if(this.y > gameHeight){
-			this.y = -this.ySize;
-		}
+		
+			 y = y + speed;
+		
 
+		
 	};
 
 	this.draw = function(){
-		fill(green);
-		rect();
+		fill(0, 255, 0);
+		rect(x, y, xSize, ySize);
 
+	};
+
+	this.getY = function(){
+		
+		return y;
+	};
+
+	this.setY = function(inY){
+		
+		y = inY;
+	};
+
+	this.getYSize = function(){
+		return ySize;
 	};
 };
